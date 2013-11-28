@@ -2,9 +2,10 @@
 public class Carro {
 	
 	private int ano;
-	private string marca;
-	private string modelo;
-	private string versao;
+	private String marca;
+	private String modelo;
+	private String versao;
 	private int Quilometragem;
+	private String FocaNoEstudo;
 		
 }

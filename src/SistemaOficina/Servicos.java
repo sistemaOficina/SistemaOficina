@@ -3,21 +3,19 @@ package SistemaOficina;
 public class Servicos {
 	
 	private String descricao;
-	private String tipo;
-	private double quantidade;
+	private String regiao;
+	private int quantidade;
 	private double valorUnidade;
 	private double valorTotal;
 	private String obs;
 	
-	public Servicos(String descricao, String tipo, double quantidade,
-			double valorUnidade, double valorTotal, String obs) {
+	public Servicos(String descricao, String tipo, int quantidade,
+			double valorUnidade) {
 		super();
 		this.descricao = descricao;
-		this.tipo = tipo;
+		this.regiao = tipo;
 		this.quantidade = quantidade;
 		this.valorUnidade = valorUnidade;
-		this.valorTotal = valorTotal;
-		this.obs = obs;
 	}
 
 	public String getDescricao() {
@@ -29,18 +27,18 @@ public class Servicos {
 	}
 
 	public String getTipo() {
-		return tipo;
+		return regiao;
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.regiao = tipo;
 	}
 
-	public double getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(double quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -66,6 +64,11 @@ public class Servicos {
 
 	public void setObs(String obs) {
 		this.obs = obs;
+	}
+	
+	public void calculaValorTotal() {
+		
+		valorTotal = quantidade * valorUnidade;
 	}
 	
 	

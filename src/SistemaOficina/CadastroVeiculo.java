@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package SistemaOficina;
 
 import java.util.ArrayList;
@@ -14,11 +10,16 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroVeiculo extends javax.swing.JFrame {
 
     private Veiculo umVeiculo;
-    private DefaultListModel acessoriosListModel;
+    private DefaultListModel AcessorioListModel;
+    private DefaultListModel DefeitoListModel;
 
     
     public CadastroVeiculo() {
         initComponents();
+        this.DefeitoListModel = new DefaultListModel();
+        this.jListDefeitos.setModel(DefeitoListModel);
+        this.AcessorioListModel = new DefaultListModel();
+        this.jListAcessorios.setModel(AcessorioListModel);
     }
 
     /**
@@ -36,7 +37,7 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         anoText = new javax.swing.JTextField();
         placaText = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListAcessorios = new javax.swing.JList();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         Modelo = new javax.swing.JLabel();
@@ -47,7 +48,7 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         acessorios = new javax.swing.JLabel();
         defeitos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        jListDefeitos = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -73,12 +74,12 @@ public class CadastroVeiculo extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        jListAcessorios.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(jListAcessorios);
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +101,12 @@ public class CadastroVeiculo extends javax.swing.JFrame {
 
         defeitos.setText("Defeitos:");
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        jListDefeitos.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList2);
+        jScrollPane1.setViewportView(jListDefeitos);
 
         jButton1.setText("Salvar");
 
@@ -256,8 +257,8 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     private javax.swing.JLabel defeitos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
+    private javax.swing.JList jListAcessorios;
+    private javax.swing.JList jListDefeitos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField4;

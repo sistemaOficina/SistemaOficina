@@ -12,15 +12,16 @@ public class Veiculo {
     private int quilometragem;
     private String numChassi;
     private ArrayList<Acessorios> acessorios;
+    private ArrayList<Defeitos> defeito;
     private String observacoes;
-    private String defeito;
+  
 
     public Veiculo(String modelo, int ano, String placa, String numChassi, String defeito) {
         this.modelo = modelo;
         this.ano = ano;
         this.placa = placa;
         this.numChassi = numChassi;
-        this.defeito = defeito;
+      
     }
 
     public String getMarca() {
@@ -87,13 +88,15 @@ public class Veiculo {
         this.observacoes = observacoes;
     }
 
-    public String getDefeito() {
+    public ArrayList<Defeitos> getDefeito() {
         return defeito;
     }
 
-    public void setDefeito(String defeito) {
+    public void setDefeito(ArrayList<Defeitos> defeito) {
         this.defeito = defeito;
     }
+
+   
     
     
 }

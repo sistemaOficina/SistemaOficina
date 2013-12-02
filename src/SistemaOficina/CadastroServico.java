@@ -28,9 +28,9 @@ public class CadastroServico extends javax.swing.JDialog {
         jLabelQuantidade = new javax.swing.JLabel();
         jTextFieldQuantidade = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
-        jButtonAdicionar = new javax.swing.JButton();
-        jLabelObs = new javax.swing.JLabel();
-        jTextFieldObs = new javax.swing.JTextField();
+        jButtonSalvarServico = new javax.swing.JButton();
+
+        setTitle("Cadastro Servico");
 
         jLabelValorUnidade.setText("Valor Unidade:");
 
@@ -56,14 +56,12 @@ public class CadastroServico extends javax.swing.JDialog {
             }
         });
 
-        jButtonAdicionar.setText("Adicionar");
-        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvarServico.setText("Salvar");
+        jButtonSalvarServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdicionarActionPerformed(evt);
+                jButtonSalvarServicoActionPerformed(evt);
             }
         });
-
-        jLabelObs.setText("Observacoes:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,33 +71,32 @@ public class CadastroServico extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDescricao)
-                            .addComponent(jLabelRegiao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldRegiao)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonAdicionar)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabelValorUnidade)
-                                        .addComponent(jLabelQuantidade))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldValorUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonCancelar)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelObs)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldObs))))
-                .addContainerGap())
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelQuantidade)
+                                        .addGap(26, 26, 26)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldValorUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(125, 125, 125))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonSalvarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(jButtonCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelRegiao)
+                            .addComponent(jLabelDescricao))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRegiao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,13 +117,9 @@ public class CadastroServico extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldValorUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelValorUnidade))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldObs, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelObs))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdicionar)
+                    .addComponent(jButtonSalvarServico)
                     .addComponent(jButtonCancelar))
                 .addContainerGap())
         );
@@ -134,7 +127,12 @@ public class CadastroServico extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+private void jButtonSalvarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarServicoActionPerformed
+    
+    Servicos umServico = new Servicos();
+    CadastroOrdemDeServico.listaServicos.add(umServico);
+    
+    
     try {
         Integer.parseInt(jTextFieldValorUnidade.getText());
     } catch (Exception e) {
@@ -142,9 +140,9 @@ private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//
         jTextFieldValorUnidade.requestFocus();
         return;
     }
-    servico = new Servicos(jTextFieldDescricao.getText(), jTextFieldRegiao.getText(), Integer.parseInt(jTextFieldQuantidade.getText()), Double.parseDouble(jTextFieldValorUnidade.getText()));
+    servico = new Servicos();
     this.setVisible(false);
-}//GEN-LAST:event_jButtonAdicionarActionPerformed
+}//GEN-LAST:event_jButtonSalvarServicoActionPerformed
 
 private void exibirInformacao(String info) {
     JOptionPane.showMessageDialog(this, info, "Atencao", JOptionPane.INFORMATION_MESSAGE);
@@ -197,15 +195,13 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSalvarServico;
     private javax.swing.JLabel jLabelDescricao;
-    private javax.swing.JLabel jLabelObs;
     private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JLabel jLabelRegiao;
     private javax.swing.JLabel jLabelValorUnidade;
     private javax.swing.JTextField jTextFieldDescricao;
-    private javax.swing.JTextField jTextFieldObs;
     private javax.swing.JTextField jTextFieldQuantidade;
     private javax.swing.JTextField jTextFieldRegiao;
     private javax.swing.JTextField jTextFieldValorUnidade;

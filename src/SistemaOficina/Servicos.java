@@ -9,7 +9,7 @@ public class Servicos {
     private String regiao;
     private int quantidade;
     private double valorUnidade;
-    private double valorTotal;
+    protected double valorTotal;
     private String observacao;
     
     public Servicos() {

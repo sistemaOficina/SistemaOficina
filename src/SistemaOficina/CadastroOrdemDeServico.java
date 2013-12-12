@@ -222,15 +222,20 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         int numeroLinhas =jTableOS.getRowCount()-1;
         jTableOS.setRowSelectionInterval(numeroLinhas, numeroLinhas);
         
-       
+        double calculaTotal = 0;
         for (int i = 0; i < listServicos.size(); i++) {
-            aieauhusomaTotal
+           
+           calculaTotal = calculaTotal + listServicos.get(i).getValorTotal();
+           listServicos.get(i).valorTotal = calculaTotal;
+          
         }
+        
+        System.out.println(calculaTotal);
+        jTextTotal.setText(""+ calculaTotal);
       
       jTextFieldDescricao.requestFocus();
       
-      jTextTotal.setText(""+);
-        System.out.println(listServicos.get(0).getValorTotal());
+      
         
         
     }//GEN-LAST:event_jButtonAdicionarActionPerformed

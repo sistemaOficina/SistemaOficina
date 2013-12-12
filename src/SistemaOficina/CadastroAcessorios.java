@@ -1,18 +1,33 @@
 
 package SistemaOficina;
 
+import java.awt.GraphicsConfiguration; 
+import javax.swing.JOptionPane;  
+import javax.swing.SwingUtilities; 
+import javax.swing.JFrame; 
+
   
 public class CadastroAcessorios extends javax.swing.JFrame {
 
 private Acessorios acessorio;
 
+    public CadastroAcessorios() {
+      initComponents();  
+    }
+
+   
+
 public Acessorios getAcessorios() {
         return acessorio;
     }
 
-    public CadastroAcessorios() {
-        initComponents();
-    }
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -78,8 +93,8 @@ public Acessorios getAcessorios() {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
 
-        acessorio = new Acessorios(jTextFieldAcessorio.getText());
-        this.setVisible(false);
+        //acessorio = new Acessorios(jTextFieldAcessorio.getText());
+        //this.setVisible(true);
 
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 

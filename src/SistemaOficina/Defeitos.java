@@ -1,6 +1,8 @@
 
 package SistemaOficina;
 
+import java.util.ArrayList;
+
 
 public class Defeitos {
     
@@ -18,6 +20,7 @@ public class Defeitos {
     public void setTipoDefeito(String tipoDefeito) {
         this.tipoDefeito = tipoDefeito;
     }
-    
+
+
 }
     

@@ -5,31 +5,23 @@ package SistemaOficina;
 import java.util.ArrayList;
 
 public class Veiculo {
-    private String marca;
     private String modelo;
+    private String veiculo;
     private int ano;
     private String placa;
     private int quilometragem;
     private String numChassi;
     private ArrayList<Acessorios> acessorios;
     private ArrayList<Defeitos> defeito;
-    private String observacoes;
+
   
 
-    public Veiculo(String modelo, int ano, String placa, String numChassi, String defeito) {
-        this.modelo = modelo;
+    public Veiculo(String veiculo, int ano, String placa, String numChassi, String defeito) {
+        this.veiculo = veiculo;
         this.ano = ano;
         this.placa = placa;
         this.numChassi = numChassi;
       
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
     }
 
     public String getModelo() {
@@ -39,6 +31,18 @@ public class Veiculo {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+
+    
+
+    public String getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    
 
     public int getAno() {
         return ano;
@@ -80,14 +84,7 @@ public class Veiculo {
         this.acessorios = acessorios;
     }
 
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
+    
     public ArrayList<Defeitos> getDefeito() {
         return defeito;
     }

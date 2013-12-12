@@ -9,7 +9,7 @@ public class Servicos {
     private String regiao;
     private int quantidade;
     private double valorUnidade;
-    private double valorTotal = 0;
+    private double valorTotal;
     private String observacao;
     
     public Servicos() {
@@ -65,7 +65,7 @@ public class Servicos {
     }
 
     public double getValorTotal() {
-        return valorTotal;
+        return valorUnidade*quantidade;
     }
 
     public void setValorTotal(double valorTotal) {

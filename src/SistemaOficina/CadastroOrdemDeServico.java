@@ -42,6 +42,8 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         jTextFieldQuantidade = new javax.swing.JTextField();
         jTextFieldRegiao = new javax.swing.JTextField();
         jTextFieldDescricao = new javax.swing.JTextField();
+        jTextTotal = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         listServicos = org.jdesktop.observablecollections.ObservableCollections.observableList(listServicos);
 
@@ -129,6 +131,14 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableOS, org.jdesktop.beansbinding.ELProperty.create("${selectedElement!=null}"), jTextFieldDescricao, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
+        jTextTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextTotalActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Total ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,21 +150,24 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAdicionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonExcluir))
+                        .addComponent(jButtonExcluir)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabelRegiao)
-                            .addComponent(jLabelDescricao))
+                            .addComponent(jLabelDescricao)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldDescricao)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -185,7 +198,11 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -205,7 +222,15 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         int numeroLinhas =jTableOS.getRowCount()-1;
         jTableOS.setRowSelectionInterval(numeroLinhas, numeroLinhas);
         
-        jTextFieldDescricao.requestFocus();
+       
+        for (int i = 0; i < listServicos.size(); i++) {
+            aieauhusomaTotal
+        }
+      
+      jTextFieldDescricao.requestFocus();
+      
+      jTextTotal.setText(""+);
+        System.out.println(listServicos.get(0).getValorTotal());
         
         
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
@@ -220,6 +245,10 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         listServicos.remove(selecionado);
         
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jTextTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +289,7 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelRegiao;
     private javax.swing.JScrollPane jScrollPane1;
@@ -268,6 +298,7 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPrecoUnidade;
     private javax.swing.JTextField jTextFieldQuantidade;
     private javax.swing.JTextField jTextFieldRegiao;
+    private javax.swing.JTextField jTextTotal;
     private java.util.List<Servicos> listServicos;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

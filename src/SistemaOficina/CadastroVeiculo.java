@@ -11,9 +11,9 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     private DefaultListModel AcessorioListModel;
     private DefaultListModel DefeitoListModel;
     
-      
+     
     
-    public CadastroVeiculo() {
+        public CadastroVeiculo() {
         initComponents();
         this.DefeitoListModel = new DefaultListModel();
         this.jListDefeitos.setModel(DefeitoListModel);

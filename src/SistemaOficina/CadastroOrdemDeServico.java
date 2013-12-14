@@ -36,14 +36,18 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         jButtonAdicionar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jLabelRegiao = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelQuantidade = new javax.swing.JLabel();
+        jLabelPrecoUnidade = new javax.swing.JLabel();
         jTextFieldPrecoUnidade = new javax.swing.JTextField();
         jTextFieldQuantidade = new javax.swing.JTextField();
         jTextFieldRegiao = new javax.swing.JTextField();
         jTextFieldDescricao = new javax.swing.JTextField();
         jTextTotal = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelTotal = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaObservacao = new javax.swing.JTextArea();
+        jLabelObservacao = new javax.swing.JLabel();
+        jButtonConcluir = new javax.swing.JButton();
 
         listServicos = org.jdesktop.observablecollections.ObservableCollections.observableList(listServicos);
 
@@ -56,23 +60,15 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${descricao}"));
         columnBinding.setColumnName("Descricao");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${regiao}"));
         columnBinding.setColumnName("Regiao");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${quantidade}"));
         columnBinding.setColumnName("Quantidade");
         columnBinding.setColumnClass(Integer.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorUnidade}"));
         columnBinding.setColumnName("Valor Unidade");
         columnBinding.setColumnClass(Double.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorTotal}"));
-        columnBinding.setColumnName("Valor Total");
-        columnBinding.setColumnClass(Double.class);
-        columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTableOS);
@@ -95,9 +91,9 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
 
         jLabelRegiao.setText("Regiao:");
 
-        jLabel1.setText("Quantidade:");
+        jLabelQuantidade.setText("Quantidade:");
 
-        jLabel2.setText("Preco Unidade:");
+        jLabelPrecoUnidade.setText("Preco Unidade:");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableOS, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.valorUnidade}"), jTextFieldPrecoUnidade, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -137,7 +133,20 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Total ");
+        jLabelTotal.setText("Total :");
+
+        jTextAreaObservacao.setColumns(20);
+        jTextAreaObservacao.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaObservacao);
+
+        jLabelObservacao.setText("Observação:");
+
+        jButtonConcluir.setText("Concluir");
+        jButtonConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,29 +155,37 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonConcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTotal)
+                        .addGap(34, 34, 34)
+                        .addComponent(jTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonExcluir)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
+                            .addComponent(jLabelPrecoUnidade)
+                            .addComponent(jLabelQuantidade)
                             .addComponent(jLabelRegiao)
-                            .addComponent(jLabelDescricao)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabelDescricao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldDescricao)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAdicionar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonExcluir))
+                            .addComponent(jLabelObservacao))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -192,17 +209,22 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
                     .addComponent(jTextFieldRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabelQuantidade)
                     .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelPrecoUnidade)
                     .addComponent(jTextFieldPrecoUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabelObservacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(0, 54, Short.MAX_VALUE))
+                    .addComponent(jLabelTotal)
+                    .addComponent(jButtonConcluir))
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -222,16 +244,9 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         int numeroLinhas =jTableOS.getRowCount()-1;
         jTableOS.setRowSelectionInterval(numeroLinhas, numeroLinhas);
         
-        double calculaTotal = 0;
-        for (int i = 0; i < listServicos.size(); i++) {
-           
-           calculaTotal = calculaTotal + listServicos.get(i).getValorTotal();
-           listServicos.get(i).valorTotal = calculaTotal;
-          
-        }
         
-        System.out.println(calculaTotal);
-        jTextTotal.setText(""+ calculaTotal);
+        
+        
       
       jTextFieldDescricao.requestFocus();
       
@@ -254,6 +269,17 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
     private void jTextTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextTotalActionPerformed
+
+    private void jButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluirActionPerformed
+        double calculaTotal = 0;
+        for (int i = 0; i < listServicos.size(); i++) {
+           
+           calculaTotal = calculaTotal + listServicos.get(i).getValorTotal();
+           listServicos.get(i).valorTotal = calculaTotal; 
+        }
+        System.out.println(calculaTotal);
+        jTextTotal.setText(""+ calculaTotal);
+    }//GEN-LAST:event_jButtonConcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,14 +317,18 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonConcluir;
     private javax.swing.JButton jButtonExcluir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelDescricao;
+    private javax.swing.JLabel jLabelObservacao;
+    private javax.swing.JLabel jLabelPrecoUnidade;
+    private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JLabel jLabelRegiao;
+    private javax.swing.JLabel jLabelTotal;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableOS;
+    private javax.swing.JTextArea jTextAreaObservacao;
     private javax.swing.JTextField jTextFieldDescricao;
     private javax.swing.JTextField jTextFieldPrecoUnidade;
     private javax.swing.JTextField jTextFieldQuantidade;

@@ -54,6 +54,7 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordem de Servico");
 
+        jTableOS.setFocusable(false);
         jTableOS.getTableHeader().setReorderingAllowed(false);
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listServicos, jTableOS);
@@ -127,6 +128,7 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableOS, org.jdesktop.beansbinding.ELProperty.create("${selectedElement!=null}"), jTextFieldDescricao, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
+        jTextTotal.setEditable(false);
         jTextTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextTotalActionPerformed(evt);
@@ -238,21 +240,14 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         
-        Servicos umServico = new Servicos();
-        listServicos.add(umServico);
+      Servicos umServico = new Servicos();
+      listServicos.add(umServico);
         
-        int numeroLinhas =jTableOS.getRowCount()-1;
-        jTableOS.setRowSelectionInterval(numeroLinhas, numeroLinhas);
-        
-        
-        
-        
-      
+      int numeroLinhas =jTableOS.getRowCount()-1;
+      jTableOS.setRowSelectionInterval(numeroLinhas, numeroLinhas);
+       
       jTextFieldDescricao.requestFocus();
-      
-      
-        
-        
+         
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     private void jTextFieldRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegiaoActionPerformed

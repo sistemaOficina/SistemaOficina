@@ -2,7 +2,7 @@ package SistemaOficina;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
+
  
 
 public class CadastroVeiculo extends javax.swing.JFrame {
@@ -19,7 +19,7 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         this.jListDefeitos.setModel(DefeitoListModel);
         this.AcessorioListModel = new DefaultListModel();
         this.jListAcessorios.setModel(AcessorioListModel);
-        umVeiculo = new Veiculo("Carro", 0000, "aaaa","123d"); 
+        umVeiculo = new Veiculo(" ", 0000, " "," "); 
         this.setTitle("Cadastro de Veículos");
     }
 
@@ -29,7 +29,7 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         modeloText.setText(null);
         placaText.setText(null);
         anoText.setText("0");
-        veiculoText.setText(null);Veiculo umVeiculo = new Veiculo("Carro", 0000, "aaaa","123d"); 
+        veiculoText.setText(null);
         AcessorioListModel.clear();
         DefeitoListModel.clear();
             }
@@ -66,22 +66,22 @@ public class CadastroVeiculo extends javax.swing.JFrame {
    // VALIDAR CAMPOS DEPOIS
    
    private void salvarRegistro() {
-        ArrayList<Acessorios> acessorios;
-        ArrayList<Defeitos> defeito; 
+        ArrayList<String> acessorio;
+        ArrayList<String> defeito; 
         
-        acessorios = new ArrayList<Acessorios>();
+        
+        acessorio = new ArrayList<String>();
         for (int i = 0; i < AcessorioListModel.size(); i++) {
-            Acessorios acessorio = (Acessorios) AcessorioListModel.getElementAt(i);
-            acessorios.add(acessorio);
+            acessorio.add(AcessorioListModel.getElementAt(i).toString());
         }
 
-        defeito = new ArrayList<Defeitos>();
+        defeito = new ArrayList<String>();
         for (int i = 0; i < DefeitoListModel.size(); i++) {
-            Defeitos defeitos = (Defeitos)DefeitoListModel.getElementAt(i);
-            defeito.add(defeitos);
+            defeito.add(DefeitoListModel.getElementAt(i).toString());
         }
 
-       
+        umVeiculo.setAcessorios(acessorio);
+        umVeiculo.setDefeito(defeito);
         umVeiculo.setModelo(modeloText.getText());
         umVeiculo.setPlaca(placaText.getText());
         umVeiculo.setNumChassi(jTextChassi.getText());
@@ -361,14 +361,14 @@ public class CadastroVeiculo extends javax.swing.JFrame {
 
     private void jButtonAddAceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAceActionPerformed
       
-        CadastroAcessorios cadastro = new CadastroAcessorios();
-       cadastro.setTitle("Acessorios");  
-       cadastro.setVisible(true);
-       cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-       if (cadastro.getAcessorios()!= null) {
-        AcessorioListModel.addElement(cadastro.getAcessorios());
+    CadastroAcessorio cadastro = new CadastroAcessorio(this, true);
+    cadastro.setVisible(true);
+   
+    if (cadastro.getAcessorio()!= null) {
+        AcessorioListModel.addElement(cadastro.getAcessorio());
     }
-    //cadastro.dispose();   // TODO add your handling code here:
+    cadastro.dispose();
+    
     }//GEN-LAST:event_jButtonAddAceActionPerformed
 
     private void jButtonRemoveAceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveAceActionPerformed
@@ -378,7 +378,9 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRemoveAceActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        this.salvarRegistro();        // TODO add your handling code here:
+        this.salvarRegistro(); 
+      
+           //  TODO add your handling code here:
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -386,21 +388,23 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAddDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDefActionPerformed
-       CadastroDefeitos cadastro = new CadastroDefeitos();
-       cadastro.setTitle("Defeitos");  
-       cadastro.setVisible(true);
-       cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-      if (cadastro.getDefeitos()!= null) {
-        AcessorioListModel.addElement(cadastro.getDefeitos());
-      }// TODO add your handling code here:
+    CadastroDefeito cadastro = new CadastroDefeito(this, true);
+    cadastro.setVisible(true);
+        if (cadastro.getDefeito()!= null) {
+       DefeitoListModel.addElement(cadastro.getDefeito());
+    }
+    cadastro.dispose();
+    
+                   
     }//GEN-LAST:event_jButtonAddDefActionPerformed
 
     private void jButtonRemoveDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveDefActionPerformed
      if (jListDefeitos.getSelectedIndex() != -1) {
-        DefeitoListModel.removeElementAt(jListDefeitos.getSelectedIndex());  
-     }// TODO add your handling code here:
+        DefeitoListModel.removeElementAt(jListDefeitos.getSelectedIndex());
+    }
     }//GEN-LAST:event_jButtonRemoveDefActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

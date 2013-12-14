@@ -2,9 +2,7 @@ package SistemaOficina;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
+
  
 
 public class CadastroVeiculo extends javax.swing.JFrame {
@@ -12,7 +10,8 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     private Veiculo umVeiculo;
     private DefaultListModel AcessorioListModel;
     private DefaultListModel DefeitoListModel;
-
+    
+      
     
     public CadastroVeiculo() {
         initComponents();
@@ -20,6 +19,8 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         this.jListDefeitos.setModel(DefeitoListModel);
         this.AcessorioListModel = new DefaultListModel();
         this.jListAcessorios.setModel(AcessorioListModel);
+        umVeiculo = new Veiculo(" ", 0000, " "," "); 
+        this.setTitle("Cadastro de Veículos");
     }
 
    private void limparCampos() {
@@ -35,20 +36,20 @@ public class CadastroVeiculo extends javax.swing.JFrame {
    
    private void preencherCampos() {
        
-        ArrayList<Acessorios> acessorios;
-        ArrayList<Defeitos> defeito;     
+        ArrayList<String> acessorios;
+        ArrayList<String> defeito;     
          
         
         AcessorioListModel.clear();
         acessorios = umVeiculo.getAcessorios();
-        for (Acessorios t : acessorios){
+        for (String t : acessorios){
             AcessorioListModel.addElement(t);
         }
         
         
         DefeitoListModel.clear();
         defeito = umVeiculo.getDefeito();
-        for (Defeitos p : defeito) {
+        for (String p : defeito) {
             DefeitoListModel.addElement(p);
         }
 
@@ -65,22 +66,22 @@ public class CadastroVeiculo extends javax.swing.JFrame {
    // VALIDAR CAMPOS DEPOIS
    
    private void salvarRegistro() {
-        ArrayList<Acessorios> acessorios;
-        ArrayList<Defeitos> defeito; 
+        ArrayList<String> acessorio;
+        ArrayList<String> defeito; 
         
-        acessorios = new ArrayList<Acessorios>();
+        
+        acessorio = new ArrayList<String>();
         for (int i = 0; i < AcessorioListModel.size(); i++) {
-            Acessorios acessorio = (Acessorios) AcessorioListModel.getElementAt(i);
-            acessorios.add(acessorio);
+            acessorio.add(AcessorioListModel.getElementAt(i).toString());
         }
 
-        defeito = new ArrayList<Defeitos>();
+        defeito = new ArrayList<String>();
         for (int i = 0; i < DefeitoListModel.size(); i++) {
-            Defeitos defeitos = (Defeitos)DefeitoListModel.getElementAt(i);
-            defeito.add(defeitos);
+            defeito.add(DefeitoListModel.getElementAt(i).toString());
         }
 
-       
+        umVeiculo.setAcessorios(acessorio);
+        umVeiculo.setDefeito(defeito);
         umVeiculo.setModelo(modeloText.getText());
         umVeiculo.setPlaca(placaText.getText());
         umVeiculo.setNumChassi(jTextChassi.getText());
@@ -89,6 +90,7 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         umVeiculo.setVeiculo(veiculoText.getText());
         
    }   
+   
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -215,36 +217,34 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         });
 
         jButtonAddDef.setText("+");
+        jButtonAddDef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddDefActionPerformed(evt);
+            }
+        });
 
         jButtonRemoveDef.setText("-");
+        jButtonRemoveDef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveDefActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelar)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(acessorios)
-                        .addGap(128, 128, 128))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAddDef, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAddDef, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRemoveDef, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonRemoveDef, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPaneDefeito, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Veiculo)
                                     .addComponent(Modelo)
@@ -262,12 +262,24 @@ public class CadastroVeiculo extends javax.swing.JFrame {
                                     .addComponent(modeloText)
                                     .addComponent(anoText))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                                .addComponent(jScrollPaneAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPaneAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPaneDefeito))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAddAce, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRemoveAce, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonRemoveAce, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jButtonAddAce, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(16, 16, 16))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonCancelar)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(acessorios)
+                        .addGap(156, 156, 156))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,14 +360,15 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextQuilometragemActionPerformed
 
     private void jButtonAddAceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAceActionPerformed
-      CadastroAcessorios cadastro = new CadastroAcessorios(); 
-      cadastro.setVisible(true);    
-      cadastro.setTitle("Cadastro Acessorios");     
-                                  
-      if (cadastro.getAcessorios()!= null) {
-        AcessorioListModel.addElement(cadastro.getAcessorios());
+      
+    CadastroAcessorio cadastro = new CadastroAcessorio(this, true);
+    cadastro.setVisible(true);
+   
+    if (cadastro.getAcessorio()!= null) {
+        AcessorioListModel.addElement(cadastro.getAcessorio());
     }
-    cadastro.dispose();   // TODO add your handling code here:
+    cadastro.dispose();
+    
     }//GEN-LAST:event_jButtonAddAceActionPerformed
 
     private void jButtonRemoveAceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveAceActionPerformed
@@ -365,13 +378,33 @@ public class CadastroVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRemoveAceActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-            this.salvarRegistro();        // TODO add your handling code here:
+        this.salvarRegistro(); 
+      
+           //  TODO add your handling code here:
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.limparCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
+    private void jButtonAddDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDefActionPerformed
+    CadastroDefeito cadastro = new CadastroDefeito(this, true);
+    cadastro.setVisible(true);
+        if (cadastro.getDefeito()!= null) {
+       DefeitoListModel.addElement(cadastro.getDefeito());
+    }
+    cadastro.dispose();
+    
+                   
+    }//GEN-LAST:event_jButtonAddDefActionPerformed
+
+    private void jButtonRemoveDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveDefActionPerformed
+     if (jListDefeitos.getSelectedIndex() != -1) {
+        DefeitoListModel.removeElementAt(jListDefeitos.getSelectedIndex());
+    }
+    }//GEN-LAST:event_jButtonRemoveDefActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -402,7 +435,8 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroVeiculo().setVisible(true);
+            new CadastroVeiculo().setVisible(true);
+       
             }
         });
     }

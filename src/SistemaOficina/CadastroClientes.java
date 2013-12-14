@@ -4,6 +4,8 @@
  */
 package SistemaOficina;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author marcella
@@ -70,6 +72,11 @@ public class CadastroClientes extends javax.swing.JFrame {
         });
 
         jButton2CadastrarVeiculo.setText("Cadastrar Veículo");
+        jButton2CadastrarVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2CadastrarVeiculoActionPerformed(evt);
+            }
+        });
 
         jButtonSalvar.setText("Salvar");
 
@@ -128,9 +135,9 @@ public class CadastroClientes extends javax.swing.JFrame {
                                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45)
-                                .addComponent(jButton2CadastrarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButton2CadastrarVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButtonGerarOS, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane2))
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -172,7 +179,7 @@ public class CadastroClientes extends javax.swing.JFrame {
                     .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGerarOS)
                     .addComponent(jButton2CadastrarVeiculo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,6 +193,15 @@ public class CadastroClientes extends javax.swing.JFrame {
     //}
     cadastro.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGerarOSActionPerformed
+
+    private void jButton2CadastrarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2CadastrarVeiculoActionPerformed
+    CadastroVeiculo cadastro = new CadastroVeiculo();
+    cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);   
+    cadastro.setTitle("Cadastro Veiculo");  
+    cadastro.pack();
+    cadastro.setLocationRelativeTo(null); 
+    cadastro.setVisible(true);
+    }//GEN-LAST:event_jButton2CadastrarVeiculoActionPerformed
 
     /**
      * @param args the command line arguments

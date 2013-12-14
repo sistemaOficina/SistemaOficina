@@ -2,6 +2,7 @@ package SistemaOficina;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
  
 
@@ -21,6 +22,10 @@ public class CadastroVeiculo extends javax.swing.JFrame {
         this.jListAcessorios.setModel(AcessorioListModel);
         umVeiculo = new Veiculo(" ", 0000, " "," "); 
         this.setTitle("Cadastro de Veículos");
+    }
+
+    CadastroVeiculo(JFrame jFrame, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    private void limparCampos() {

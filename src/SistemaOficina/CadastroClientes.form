@@ -69,9 +69,9 @@
                                   <Component id="jTextFieldData" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                                   <Component id="jTextFieldRg" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="jButton2CadastrarVeiculo" min="-2" pref="137" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="jButton2CadastrarVeiculo" min="-2" pref="146" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonGerarOS" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -126,7 +126,7 @@
                   <Component id="jButtonGerarOS" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2CadastrarVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -186,6 +186,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar Ve&#xed;culo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2CadastrarVeiculoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSalvar">
       <Properties>

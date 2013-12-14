@@ -1,21 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package SistemaOficina;
 
 import java.util.LinkedList;
 
-/**
- *
- * @author eduardo
- */
-public class CadastroOrdemDeServico extends javax.swing.JFrame {
+public class CadastroOrdemDeServico extends javax.swing.JDialog {
 
-    /**
-     * Creates new form CadastroOrdemDeServico
-     */
-    public CadastroOrdemDeServico() {
+    
+    private Servicos servico;
+
+    
+    public Servicos getServico() {
+        return servico;
+    }
+    
+    public CadastroOrdemDeServico(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -51,7 +49,6 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
 
         listServicos = org.jdesktop.observablecollections.ObservableCollections.observableList(listServicos);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordem de Servico");
 
         jTableOS.setFocusable(false);
@@ -305,8 +302,9 @@ public class CadastroOrdemDeServico extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new CadastroOrdemDeServico().setVisible(true);
+                new CadastroOrdemDeServico(new javax.swing.JFrame(), true).setVisible(true);
             }
         });
     }

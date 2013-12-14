@@ -4,7 +4,8 @@ package SistemaOficina;
 import java.awt.GraphicsConfiguration; 
 import javax.swing.JOptionPane;  
 import javax.swing.SwingUtilities; 
-import javax.swing.JFrame; 
+import javax.swing.JFrame;
+import SistemaOficina.CadastroVeiculo;
 
   
 public class CadastroAcessorios extends javax.swing.JFrame {
@@ -12,7 +13,9 @@ public class CadastroAcessorios extends javax.swing.JFrame {
 private Acessorios acessorio;
 
     public CadastroAcessorios() {
-      initComponents();  
+      initComponents();
+         
+     
     }
 
    
@@ -21,13 +24,7 @@ public Acessorios getAcessorios() {
         return acessorio;
     }
 
-    /**
-     *
-     * @param parent
-     * @param modal
-     */
-    
-    
+     
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -93,8 +90,10 @@ public Acessorios getAcessorios() {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
 
-        //acessorio = new Acessorios(jTextFieldAcessorio.getText());
-        //this.setVisible(true);
+        acessorio = new Acessorios(jTextFieldAcessorio.getText());
+        this.setVisible(true);
+        
+        dispose();
 
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
